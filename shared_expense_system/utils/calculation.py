@@ -1,11 +1,12 @@
 def split_amount(amount, participants):
-    """
-    分攤金額：平均分
-    ⚠️ 任務 2: 故意 bug， shares 加總有小數點，且加總不保證等於 amount
-    """
+    '''
+    shares round to integer
+    adjust the rounding difference by the last participant's share
+    '''
     n = len(participants)
-    shares = []
-    for i in range(n):
-        share = amount / n
-        shares.append(share)
+    base_share = round(amount / n)
+    shares = [base_share for _ in range(n)]
+    diff = int(amount - sum(shares))
+    if diff != 0:
+        shares[-1] += diff
     return shares

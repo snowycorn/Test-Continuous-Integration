@@ -15,9 +15,12 @@ def test_split_amount_even():
 
 def test_split_amount_uneven():
     participants = ["Alice", "Bob", "Charlie"]
-    amounts = split_amount(10, participants)
-    # 因為你的 function 平均分，可能是浮點數
-    assert sum(amounts) == pytest.approx(10)
+    amounts = split_amount(100, participants)
+    # 金額不能是浮點數，應 round 到整數並把誤差補到最後一個人
+    assert amounts == [33, 33, 34]
+    # 加總要保證等於 amount
+    total = sum(amounts)
+    assert total == 100
 
 # ---------------------------
 # storage.py 測試
