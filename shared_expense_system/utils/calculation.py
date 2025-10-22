@@ -1,8 +1,7 @@
 def split_amount(amount, participants):
     """
     分攤金額：平均分
-    💡 任務 1: 可重構
-    ⚠️ 任務 2: 故意 bug: payer 在 participants 會多扣一次
+    ⚠️ 任務 2: 故意 bug， shares 加總有小數點，且加總不保證等於 amount
     """
     n = len(participants)
     shares = []
